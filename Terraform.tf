@@ -57,9 +57,9 @@ resource "azurerm_network_security_group" "myterraformnsg" {
         direction                  = "Inbound"
         access                     = "Allow"
         protocol                   = "Tcp"
-        source_ip_adresses         = "203.191.35.0/24"
+        source_port_range         = "*"
         destination_port_range     = "22"
-        source_address_prefix      = "*"
+        source_address_prefix      = "203.191.35.0/24"
         destination_address_prefix = "*"
     }
 
