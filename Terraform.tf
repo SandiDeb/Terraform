@@ -135,6 +135,7 @@ resource "azurerm_virtual_machine" "myterraformvm" {
     os_profile {
         computer_name  = "myvm"
         admin_username = "azureuser"
+        admin_password = "Welcome@123"
     }
 
     os_profile_linux_config {
