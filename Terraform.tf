@@ -126,9 +126,9 @@ resource "azurerm_virtual_machine" "myterraformvm" {
     }
 
     storage_image_reference {
-        publisher = "Canonical"
-        offer     = "UbuntuServer"
-        sku       = "16.04.0-LTS"
+        publisher = "RedHat"
+        offer     = "RHEL"
+        sku       = "7.4"
         version   = "latest"
     }
 
