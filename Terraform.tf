@@ -161,8 +161,8 @@ resource "azurerm_virtual_machine" "myterraformvm" {
       connection {
         type     = "password"
         host     = "${azurerm_public_ip.myterraformpublicip.ip_address}"
-        user     = "${element(os_profile.admin_username)}"
-        password = "${element(os_profile.admin_password)}"
+        user     = "azureuser"
+        password = "Welcome@123"
       }
     }
 
