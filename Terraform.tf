@@ -168,6 +168,7 @@ resource "azurerm_virtual_machine" "myterraformvm" {
         type     = "ssh"
         user     = "azureuser"
         password = "Welcome@123"
+        timeout  = "10m"
       }
     }
 
