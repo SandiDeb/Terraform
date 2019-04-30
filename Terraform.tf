@@ -143,9 +143,29 @@ resource "azurerm_virtual_machine" "myterraformvm" {
     }
 
     boot_diagnostics {
-        enabled = "true"
+        enabled     = "false"
         storage_uri = "${azurerm_storage_account.mystorageaccount.primary_blob_endpoint}"
     }
+
+    provisioner "file" {
+      source      = "script.sh"
+      destination = "/tmp/script.sh"
+    }
+
+    provisioner "remote-exec" {
+      inline=[
+      "chmod +x /tmp/script.sh",
+      "sudo /tmp/script.sh"
+      ]
+
+      connection {
+        type     = "password"
+        host     = "${azurerm_public_ip.myterraformpublicip.ip_address}"
+        user     = "${element(os_profile.admin_username)}"
+        password = "${element(os_profile.admin_password)}"
+      }
+    }
+
 
     tags {
         environment = "Terraform Demo"
