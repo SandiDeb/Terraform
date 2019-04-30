@@ -150,6 +150,12 @@ resource "azurerm_virtual_machine" "myterraformvm" {
     provisioner "file" {
       source      = "script.sh"
       destination = "/tmp/script.sh"
+
+      connection {
+        type     = "ssh"
+        user     = "azureuser"
+        password = "Welcome@123"
+      }
     }
 
     provisioner "remote-exec" {
@@ -159,8 +165,7 @@ resource "azurerm_virtual_machine" "myterraformvm" {
       ]
 
       connection {
-        type     = "password"
-        host     = "${azurerm_public_ip.myterraformpublicip.ip_address}"
+        type     = "ssh"
         user     = "azureuser"
         password = "Welcome@123"
       }
