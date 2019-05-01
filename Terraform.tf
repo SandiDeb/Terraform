@@ -159,16 +159,7 @@ resource "azurerm_virtual_machine" "myterraformvm" {
         storage_uri = "${azurerm_storage_account.mystorageaccount.primary_blob_endpoint}"
     }
 
-    provisioner "file" {
-      source      = "script.sh"
-      destination = "/tmp/script.sh"
-
-      connection {
-        type     = "ssh"
-        user     = "azureuser"
-        password = "Welcome@123"
-      }
-    }
+    user_data = = "${file("script.sh")}"
 
     tags {
         environment = "Terraform Demo"
