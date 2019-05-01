@@ -159,7 +159,11 @@ resource "azurerm_virtual_machine" "myterraformvm" {
         storage_uri = "${azurerm_storage_account.mystorageaccount.primary_blob_endpoint}"
     }
 
-    user_data = = "${file("script.sh")}"
+    settings = <<SETTINGS
+        {
+            "commandToExecute": "yum install -y nginx > /dev/null && systemctl start nginx && echo 'bootscript done' > /tmp/result.txt"
+        }
+SETTINGS
 
     tags {
         environment = "Terraform Demo"
