@@ -159,15 +159,13 @@ resource "azurerm_virtual_machine" "myterraformvm" {
         storage_uri = "${azurerm_storage_account.mystorageaccount.primary_blob_endpoint}"
     }
 
-    provisioner "remote-exec" {
     connection {
       user     = "azureuser"
       password = "Welcome@123"
     }
 
-    inline = [
-      "yum install -y nginx","service nginx start",
-    ]
+    provisioner "remote-exec" {
+        scripts = "script.sh"
   }
 
     tags {
