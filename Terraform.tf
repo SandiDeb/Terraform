@@ -64,7 +64,7 @@ resource "azurerm_network_security_group" "myterraformnsg" {
     }
 
     security_rule {
-        name                       = "SSH"
+        name                       = "SSH1"
         priority                   = 1101
         direction                  = "Inbound"
         access                     = "Allow"
