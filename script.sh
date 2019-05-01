@@ -7,4 +7,4 @@ done
 sudo yum update -y
 sudo yum install nginx -y
 # make sure nginx is started
-service nginx start
+sudo service nginx start

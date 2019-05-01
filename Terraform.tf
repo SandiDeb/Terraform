@@ -158,21 +158,6 @@ resource "azurerm_virtual_machine" "myterraformvm" {
       }
     }
 
-    provisioner "remote-exec" {
-      inline=[
-      "chmod +x /tmp/script.sh",
-      "sudo /tmp/script.sh"
-      ]
-
-      connection {
-        type     = "ssh"
-        user     = "azureuser"
-        password = "Welcome@123"
-        timeout  = "10m"
-      }
-    }
-
-
     tags {
         environment = "Terraform Demo"
     }
